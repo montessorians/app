@@ -1,0 +1,30 @@
+<div class="right" style="margin-right: 20px;">
+    <i class="material-icons" style="color: seagreen;">notifications_none</i>
+</div>
+
+<div class="container" style="padding-bottom: 200px;">
+    <h2 style="color: seagreen; font-weight: bold; margin-bottom: 50px;">Hello<br>{{user.first_name || 'Montessorian'}}!</h2>
+    <h5 style="color: seagreen;">Your Feed</h5>
+
+    <div class="cards-container">
+        <div *ngIf="feeds.length == 0">
+            <p style="text-align: center;">
+                Empty Content
+            </p>
+        </div>
+        <div *ngIf="feeds.length !== 0">
+            <div *ngFor="let feed of feeds" class="card hoverable">
+                <div *ngIf="feed.preview_image" class="card-img">
+                    <img src="{{feed.preview_image}}" width="100%" class="responsive-img">
+                </div>
+                <div class="card-content">
+                    <p><strong><font size="4pt">{{feed.title}}</font></strong></p><br>
+                    <p>{{feed.content}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<app-appbar active="home"></app-appbar>
