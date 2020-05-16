@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "montessori-app",
+      "public": "dist/montessori-app",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

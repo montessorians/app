@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "holy-child-montessori": {
+      "hosting": {
+        "montessori-app": [
+          "holy-child-montessori"
+        ]
+      }
+    }
+  }
+}
