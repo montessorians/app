@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'montessori-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('montessori-app');
+    expect(app.title).toEqual('Holy Child Montessori');
   });
 
   it('should render title', () => {
