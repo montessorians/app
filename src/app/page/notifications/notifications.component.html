@@ -1,0 +1,18 @@
+<div class="container">
+    <h4 style="color: seagreen">Notifications</h4><br><br>
+    <ul class="collection">
+        <li *ngFor="let entry of list" class="collection-item avatar" routerLink="{{entry.url || '/'}}" style="cursor: pointer;">
+            <i class="material-icons circle seagreen">{{entry.icon || entry.icon_url || 'notification'}}</i>
+            <p class="notif-content black-text">
+                <b>{{entry.title}}</b><br>
+                <span class="grey-text text-darken-2">{{entry.message}}</span>
+            </p><br>
+            <p><font size="-1" class="grey-text">
+                <b>
+                    <span *ngIf="entry.author.user_id">{{entry.author.first_name}} {{entry.author.last_name}}<span *ngIf="entry.author.department"> of {{entry.author.department}}</span></span>
+                </b>
+            </font></p>
+        </li>
+    </ul>
+</div>
+<app-appbar></app-appbar>
