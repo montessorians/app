@@ -1,2 +1,55 @@
-<p>ecash works!</p>
+<div class="container" *ngIf="infoLoading">
+    <div style="margin-top: 50px;">
+        <app-spinner></app-spinner>
+    </div>
+</div>
+<div class="container" *ngIf="!infoLoading && !info.is_enabled">
+    <div class="card" style="margin-top: 50px;">
+        <div class="card-content">
+            <p class="grey-text" style="text-align: center;">
+                <i class='material-icons medium'>sentiment_very_dissatisfied</i><br>
+                Your Montessori Pay is not enabled<br>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="!infoLoading && info.is_enabled == true">
+    <div class="card" style="margin-top: 50px;">
+        <div class="card-content">
+            <h1 style="text-align: center; color: seagreen">₱ {{info.balance.toFixed(2)}}</h1>
+        </div>
+        <div class="card-action">
+            <a href="javascript:void(0)" class="seagreen-text">Pay</a>
+            <a href="javascript:void(0)" class="seagreen-text">Top-Up</a>
+        </div>
+    </div>
+    <br><br>
+    <div class="card">
+        <div class="card-content">
+            <h4 class="seagreen-text">Transactions</h4>
+            <div *ngIf="transactionLoading">
+                <app-spinner></app-spinner>
+            </div>
+            <div *ngIf="!transactionLoading && transactions.length == 0">
+                <p style="text-align: center;">
+                    No Transactions Yet
+                </p>
+            </div>
+            <ul class="collection" *ngIf="!transactionLoading && transactions.length !== 0">
+                <li *ngFor="let t of transactions" class="collection-item">
+                    <p *ngIf="t.action === 'negative'" style="color: red; font-size: 16pt; font-weight: bold;">
+                        ₱ {{(+t.amount).toFixed(2)}}
+                    </p>
+                    <p *ngIf="t.action === 'positive'" style="color: seagreen; font-size: 16pt; font-weight: bold;">
+                        ₱ {{(+t.amount).toFixed(2)}}
+                    </p>
+                    <p class="grey-text text-darken-2">
+                        {{t.merchant.name || 'Unknown Merchant'}}<br>
+                        {{t.timestamp | date: 'medium'}}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 <app-appbar active="home"></app-appbar>
