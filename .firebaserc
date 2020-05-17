@@ -2,10 +2,13 @@
   "targets": {
     "holy-child-montessori": {
       "hosting": {
-        "montessori-app": [
-          "holy-child-montessori"
+        "hcmontessori-app": [
+          "hcmontessori-app"
         ]
       }
     }
+  },
+  "projects": {
+    "development": "holy-child-montessori"
   }
 }

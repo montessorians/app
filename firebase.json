@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "montessori-app",
+      "target": "hcmontessori-app",
       "site": "hcmontessori-app",
       "public": "public",
       "ignore": [
