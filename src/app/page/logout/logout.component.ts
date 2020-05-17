@@ -13,6 +13,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.afAuth.signOut().then(() => {
+      localStorage.clear();
       this.router.navigateByUrl('/login');
     });
   }
