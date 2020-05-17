@@ -1,0 +1,46 @@
+<div class="container" style="margin-bottom: 200px">
+    <br><br>
+    <div class="row">
+        <div class="col s6">
+            <div class="card">
+                <div class="card-img" *ngIf="feed.preview_image">
+                    <img src="{{feed.preview_image}}" width="100%" class="responsive-img">
+                </div>
+                <div class="card-content">
+                    <p>
+                        <b>{{feed.title}}</b><br>
+                        {{feed.content}}
+                    </p>
+                </div>
+                <div class="card-action">
+                    <a href="javascript:void(0)">
+                        <i class="material-icons" *ngIf="!feed.liked" style="color: red" (click)="likeStatus()">favorite_border</i>
+                        <i class="material-icons" *ngIf="feed.liked" style="color: red" (click)="unlikeStatus()">favorite</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="card">
+                <div class="card-content">
+                    <h1 class="card-title">Comments</h1>
+                    <div class="input-field">
+                        <input type="text" [(ngModel)]="commentInput" (keydown.enter)="postComment()" id="comment">
+                        <label for="comment">Comment</label>
+                    </div>
+                    <app-spinner *ngIf="commentsLoading"></app-spinner>
+                    <ul class="collection" *ngIf="!commentsLoading">
+                        <li class="collection-item avatar" *ngFor="let comment of comments">
+                            <img class="circle" src="{{comment.author.displayPhoto || '/assets/imgs/noimg.png'}}">
+                            <p>{{comment.message}}<br><font size="-1" class="grey-text">{{comment.author.first_name}} {{comment.author.last_name}}</font></p>
+                            <a *ngIf="comment.author.userId === user.userId" href="javascript:void(0)" style="color: red" (click)="deleteComment(comment)">
+                                <i class="material-icons tiny">delete</i> Delete
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-appbar></app-appbar>
