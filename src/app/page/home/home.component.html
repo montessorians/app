@@ -1,18 +1,21 @@
-<div class="right" style="margin-right: 20px;">
-    <i class="material-icons" style="color: seagreen;">notifications_none</i>
-</div>
-
 <div class="container" style="padding-bottom: 200px;">
+    <div class="right" style="cursor: pointer;" routerLink="/notifications">
+        <i class="material-icons" style="color: seagreen;">notifications_none</i>
+    </div>
+    
     <h2 style="color: seagreen; font-weight: bold; margin-bottom: 50px;">Hello<br>{{user.first_name || 'Montessorian'}}!</h2>
     <h5 style="color: seagreen;">Your Feed</h5>
 
     <div class="cards-container">
-        <div *ngIf="feeds.length == 0">
+        <div *ngIf="feedLoading">
+            <app-spinner></app-spinner>
+        </div>
+        <div *ngIf="feeds.length == 0 && !feedLoading">
             <p style="text-align: center;">
                 Empty Content
             </p>
         </div>
-        <div *ngIf="feeds.length !== 0">
+        <div *ngIf="feeds.length !== 0 && !feedLoading">
             <div *ngFor="let feed of feeds" class="card hoverable">
                 <div *ngIf="feed.preview_image" class="card-img">
                     <img src="{{feed.preview_image}}" width="100%" class="responsive-img">
@@ -20,6 +23,15 @@
                 <div class="card-content">
                     <p><strong><font size="4pt">{{feed.title}}</font></strong></p><br>
                     <p>{{feed.content}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="javascript:void(0)">
+                        <i class="material-icons" *ngIf="!feed.liked" style="color: red" (click)="likeStatus(feed)">favorite_border</i>
+                        <i class="material-icons" *ngIf="feed.liked" style="color: red" (click)="unlikeStatus(feed)">favorite</i>
+                    </a>
+                    <a routerLink="/post/{{feed.id}}">
+                        <i class="material-icons" style="color: black">comment</i>
+                    </a>
                 </div>
             </div>
         </div>
