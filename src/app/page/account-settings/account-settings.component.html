@@ -1,0 +1,32 @@
+<app-navbar title="Account > Settings"></app-navbar>
+<div class="container">
+    <br><br>
+    <div class="card">
+        <div class="card-content">
+            <h5>Change your Profile Picture</h5>
+            <br>
+            <app-spinner *ngIf="uploadLoading"></app-spinner>
+            <div *ngIf="!uploadLoading">
+                <input type="file" (change)="upload($event)" accept=".png,.jpg" [(ngModel)]="uploadData" />
+                <p *ngIf="error.upload">{{error.upload}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <h5>Change your Password</h5>
+            <p>You will be logged out of the system and you have to relogin again when the change is successful.<br><br></p>
+            <div class="input-field">
+                <input type="text" id="current_password" [(ngModel)]="password.current">
+                <label for="current_password">Current Password</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="new_password" [(ngModel)]="password.new">
+                <label for="new_password">New Password</label>
+            </div>
+            <button class="btn btn-large seagreen" (click)="changePassword()">Change Password</button>
+            <br>
+            <p *ngIf="error.changePassword">{{error.changePassword}}</p>
+        </div>
+    </div>
+</div>
