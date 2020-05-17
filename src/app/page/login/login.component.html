@@ -19,12 +19,12 @@
                 <br><br>
                 <div class="input-field">
                     <input type="text" name="username" id="username" *ngIf="loading" disabled [(ngModel)]="username">
-                    <input type="text" name="username" id="username" *ngIf="!loading" [(ngModel)]="username">
+                    <input type="text" name="username" id="username" *ngIf="!loading" [(ngModel)]="username" (keydown.enter)="login()">
                     <label for="username">Username</label>
                 </div>
                 <div class="input-field">
                     <input type="password" name="password" id="password" *ngIf="loading" disabled [(ngModel)]="password">
-                    <input type="password" name="password" id="password" *ngIf="!loading" [(ngModel)]="password">
+                    <input type="password" name="password" id="password" *ngIf="!loading" [(ngModel)]="password" (keydown.enter)="login()">
                     <label for="password">Password</label>
                 </div>
                 <br><br>

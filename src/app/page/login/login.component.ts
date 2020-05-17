@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { auth } from 'firebase/app';
+import * as firebase from 'firebase/app';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   password = null;
   error = null;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   login() {
     this.loading = true;
@@ -29,16 +30,32 @@ export class LoginComponent implements OnInit {
       this.loading = false;
       this.error = 'Username and Password are required';
     } else {
-      this.afAuth.setPersistence(auth.Auth.Persistence.LOCAL).then(() => {
-        this.afAuth.signInWithEmailAndPassword(`${this.username}@montessorian.xyz`, this.password).then(res => {
-          this.loading = false;
+      let username = this.username;
+      if (!username.includes('@')) { username = `${username}@montessorian.xyz`; }
+
+      this.afAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+        this.afAuth.signInWithEmailAndPassword(username, this.password).then(res => {
           this.db.collection('users').doc(res.user.uid).get().subscribe(user => {
             if (user.exists) {
               const data = user.data();
               data.userId = res.user.uid;
               localStorage.setItem('user', JSON.stringify(data));
-              this.router.navigateByUrl('/');
+              this.db.collection('school').get().subscribe(res2 => {
+                if (res2.empty) {
+                  this.router.navigateByUrl('/logout');
+                } else {
+                  res2.forEach(obj => {
+                    localStorage.setItem(obj.id, JSON.stringify(obj.data()));
+                  });
+                  this.router.navigateByUrl('/');
+                }
+              });
             }
+          }, e => {
+            this.afAuth.signOut().then(() => {
+              this.loading = false;
+              this.error = 'An error occurred while getting your information.';
+            });
           });
         }).catch(e => {
           this.loading = false;
