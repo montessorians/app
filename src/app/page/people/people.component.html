@@ -1,2 +1,25 @@
-<p>people works!</p>
+<div class="container">
+    <h4 style="color: seagreen">People</h4><br><br>
+    <div *ngIf="loading">
+        <app-spinner></app-spinner>
+    </div>
+    <div *ngIf="!loading">
+        <h5 style="color: seagreen">Administrators</h5>
+        <div class="cards-container">
+            <div class="card" *ngFor="let p of adminList">
+                <div class="card-img">
+                    <img width="100%" class="responsive-img" src="{{p.displayPhoto || '/assets/imgs/noimg.png'}}">
+                </div>
+                <div class="card-content">
+                    <p>
+                        <b class="seagreen-text">{{p.first_name}} {{p.last_name}}</b><br>
+                        <span *ngIf="p.email.includes('@montessorian.xyz')">@{{p.email.replace('@montessorian.xyz', '')}}</span>
+                        <span *ngIf="!p.email.includes('@montessorian.xyz')">{{p.email}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <app-appbar active="home"></app-appbar>
