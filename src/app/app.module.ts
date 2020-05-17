@@ -15,6 +15,12 @@ import { AssessmentComponent } from './page/assessment/assessment.component';
 import { EcashComponent } from './page/ecash/ecash.component';
 import { PeopleComponent } from './page/people/people.component';
 import { MeComponent } from './page/me/me.component';
+import { SpinnerComponent } from './component/global/spinner/spinner.component';
+import { NotificationsComponent } from './page/notifications/notifications.component';
+import { ProfileComponent } from './page/profile/profile.component';
+import { AccountSettingsComponent } from './page/account-settings/account-settings.component';
+import { PostComponent } from './page/post/post.component';
+import { NavbarComponent } from './component/global/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,13 @@ import { MeComponent } from './page/me/me.component';
     AssessmentComponent,
     EcashComponent,
     PeopleComponent,
-    MeComponent
+    MeComponent,
+    SpinnerComponent,
+    NotificationsComponent,
+    ProfileComponent,
+    AccountSettingsComponent,
+    PostComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
