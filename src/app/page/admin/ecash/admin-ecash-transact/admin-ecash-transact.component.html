@@ -1,0 +1,56 @@
+<app-navbar title="Montessori Pay > Transact"></app-navbar>
+<div class="container" style="padding-top: 30px;">
+    <div class="card" *ngIf="!loading">
+        <div class="card-content">
+            <div class="input-field">
+                <input type="text" id="email" [(ngModel)]="email">
+                <label for="email" class="active">Email/Username</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="amount" [(ngModel)]="amount">
+                <label for="amount" class="active">Amount (in Pesos)</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="title" [(ngModel)]="title">
+                <label for="title" class="active">Title</label>
+            </div>
+            <div class="input-field">
+                <p>Transaction Type</p>
+                <select [(ngModel)]="type" class="browser-default">
+                    <option value="purchase" selected>Purchase</option>
+                    <option value="top-up">Top-Up</option>
+                    <option value="adjustment">Adjustment</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <p>Action</p>
+                <select [(ngModel)]="action" class="browser-default">
+                    <option value="subtract" selected>Subtract</option>
+                    <option value="add">Add</option>
+                </select>
+            </div>
+            <br><br><br>
+            <div class="input-field">
+                <input type="text" id="merchant_id" [(ngModel)]="merchant.merchant_id">
+                <label for="email" class="active">Merchant ID</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="business_name" [(ngModel)]="merchant.business_name">
+                <label for="email" class="active">Merchant Business Name</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="merchant_name" [(ngModel)]="merchant.name">
+                <label for="email" class="active">Merchant Name</label>
+            </div>
+
+            <button class="btn btn-large seagreen" style="width: 100%;" (click)="postTransaction()">Post Transaction</button>
+            <p *ngIf="error"><br><br>{{error}}</p>
+        </div>
+    </div>
+    <div class="card" *ngIf="loading">
+        <div class="card-content">
+            <h5 style="text-align: center;">Loading...</h5>
+        </div>
+    </div>
+</div>
