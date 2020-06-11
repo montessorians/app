@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-ecash',
@@ -40,6 +41,7 @@ export class EcashComponent implements OnInit {
 
   getTransactions() {
     this.transactionLoading = true;
+    const now = moment();
     this.db.collection('users').doc(this.user.userId).collection('ecash-transactions').get().subscribe(res => {
       this.transactions = [];
       this.transactionLoading = false;
@@ -48,7 +50,7 @@ export class EcashComponent implements OnInit {
           const d = { id: obj.id };
           Object.keys(obj.data()).forEach(k => {
             if (k === 'timestamp') {
-              d[k] = obj.data()[k].toDate();
+              d[k] = now.fromNow(obj.data()[k].toDate());
             } else {
               d[k] = obj.data()[k];
             }

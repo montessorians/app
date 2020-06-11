@@ -36,17 +36,26 @@
                 </p>
             </div>
             <ul class="collection" *ngIf="!transactionLoading && transactions.length !== 0">
-                <li *ngFor="let t of transactions" class="collection-item">
-                    <p *ngIf="t.action === 'negative'" style="color: red; font-size: 16pt; font-weight: bold;">
-                        ₱ {{(+t.amount).toFixed(2)}}
-                    </p>
-                    <p *ngIf="t.action === 'positive'" style="color: seagreen; font-size: 16pt; font-weight: bold;">
-                        ₱ {{(+t.amount).toFixed(2)}}
-                    </p>
-                    <p class="grey-text text-darken-2">
-                        {{t.merchant.name || 'Unknown Merchant'}}<br>
-                        {{t.timestamp | date: 'medium'}}
-                    </p>
+                <li *ngFor="let t of transactions" class="collection-item avatar">
+                    <div class="right">
+                        <p *ngIf="t.action === 'subtract'" style="color: red; font-size: 13pt; font-weight: bold;">
+                            - ₱ {{(+t.amount).toFixed(2)}}
+                        </p>
+                        <p *ngIf="t.action === 'add'" style="color: seagreen; font-size: 13pt; font-weight: bold;">
+                            ₱ {{(+t.amount).toFixed(2)}}
+                        </p>
+                    </div>
+                    <div>
+                        <i class="circle seagreen material-icons" *ngIf="t.type == 'top-up'">add_box</i>
+                        <i class="circle seagreen material-icons" *ngIf="t.type == 'purchase'">credit_card</i>
+                    </div>
+                    <div>
+                        <span class="title">{{t.title}}</span>
+                        <p style="font-size: -1;">{{t.merchant.name}}</p>
+                        <p class="grey-text text-darken-2">
+                            {{t.timestamp}}
+                        </p>
+                    </div>
                 </li>
             </ul>
         </div>
