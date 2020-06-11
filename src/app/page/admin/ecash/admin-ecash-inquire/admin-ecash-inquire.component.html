@@ -1,0 +1,26 @@
+<app-navbar title="Montessori Pay > Inquire"></app-navbar>
+<div class="container" style="padding-top: 30px;">
+    <div class="card">
+        <div class="card-content">
+            <div class="input-field">
+                <input type="text" id="email" [(ngModel)]="email" (keyup.enter)="inquire()">
+                <label for="email">Email/Username</label>
+            </div>
+            <button (click)="inquire()" class="btn btn-large seagreen" style="width: 100%; border-radius: 30px">Inquire</button>
+            <p *ngIf="emailError"><br>{{emailError}}</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <h5 *ngIf="loading" style="text-align: center">Loading...</h5>
+            <h3 *ngIf="!loading && !init" class="seagreen-text" style="text-align: center;">
+                ₱ {{(+balance).toFixed(2)}}
+            </h3>
+            <h3 *ngIf="!loading && init" class="seagreen-text" style="text-align: center;">
+                ₱ --
+            </h3>
+            <p *ngIf="!isEnabled && !init">Montessori Pay account is disabled for this user or has not yet been activated.</p>
+        </div>
+    </div>
+</div>
