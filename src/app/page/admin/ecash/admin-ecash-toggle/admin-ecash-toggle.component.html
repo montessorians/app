@@ -1,0 +1,25 @@
+<app-navbar title="Montessori Pay > Toggle"></app-navbar>
+<div class="container" style="padding-top: 30px;">
+    <div class="card" *ngIf="!loading">
+        <div class="card-content">
+            <div class="input-field">
+                <input type="text" [(ngModel)]="email" id="email">
+                <label for="email" class="active">Email/Username</label>
+            </div>
+            <div class="input-field">
+                <select [(ngModel)]="isEnabled" class="browser-default">
+                    <option value="true">Enable</option>
+                    <option value="false">Disable</option>
+                </select>
+            </div>
+            <br><br>
+            <button class="btn btn-large seagreen" style="width: 100%; border-radius: 15px;" (click)="setValue()">Set State</button>
+            <p *ngIf="message"><br>{{message}}</p>
+        </div>
+    </div>
+    <div class="card" *ngIf="loading">
+        <div class="card-content">
+            <app-spinner></app-spinner>
+        </div>
+    </div>
+</div>
