@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
           const data = obj.data();
           Object.keys(data).forEach(k => { d[k] = data[k]; });
           d.id = obj.id;
-          console.log(d);
           this.feeds.push(d);
         });
         this.checkLikes();
