@@ -1,0 +1,113 @@
+<app-navbar title="Student > Add"></app-navbar>
+<div class="container" style="padding-top: 30px;">
+    <div class="card" *ngIf="loading">
+        <div class="card-content">
+            <app-spinner></app-spinner>
+        </div>
+    </div>
+    <div class="card" *ngIf="!loading">
+        <div class="card-content">
+            <h5>Name</h5>
+            <br>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.first_name" id="fn">
+                <label class="active" for="fn">First Name</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.middle_name" id="mn">
+                <label class="active" for="mn">Middle Name</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.last_name" id="ln">
+                <label class="active" for="ln">Last Name</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.suffix_name" id="sn">
+                <label class="active" for="sn">Suffix Name</label>
+            </div>
+            <h5>Biological Info</h5>
+            <div class="input-field">
+                <p>Gender</p>
+                <select [(ngModel)]="student.gender" class="browser-default">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <h5>Birthdate</h5>
+            <div class="input-field">
+                <p>Month</p>
+                <select [(ngModel)]="student.birthdate.month" class="browser-default">
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.birthdate.day" id="bd">
+                <label class="active" for="bd">Day</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.birthdate.year" id="by">
+                <label class="active" for="by">Year</label>
+            </div>
+            <h5>Birthplace</h5>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.birthplace.city" id="bpc">
+                <label class="active" for="bpc">City</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.birthplace.region" id="bpr">
+                <label class="active" for="bpr">Region</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.birthplace.country" id="bpcn">
+                <label class="active" for="bpcn">Country</label>
+            </div>
+
+            <h5>Residence & Guardian</h5>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.guardian" id="gu">
+                <label class="active" for="gu">Guardian</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.address.street" id="as">
+                <label class="active" for="as">Street</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.address.barangay" id="ab">
+                <label class="active" for="ab">Barangay</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.address.city" id="ac">
+                <label class="active" for="ac">City</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.address.region" id="ar">
+                <label class="active" for="ar">Region</label>
+            </div>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.address.country" id="acn">
+                <label class="active" for="acn">Country</label>
+            </div>
+
+            <h5>Reference</h5>
+            <div class="input-field">
+                <input type="text" [(ngModel)]="student.student_number" id="sno">
+                <label class="active" for="sno">Student No.</label>
+            </div>
+
+            <br><br>
+            <button class="btn btn-large seagreen" style="border-radius: 15px;" (click)="saveEntry()">Save Entry</button>
+            <p *ngIf="message"><br>{{message}}</p>
+        </div>
+    </div>
+</div>
