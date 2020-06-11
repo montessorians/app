@@ -12,6 +12,18 @@ import { NotificationsComponent } from './page/notifications/notifications.compo
 import { ProfileComponent } from './page/profile/profile.component';
 import { AccountSettingsComponent } from './page/account-settings/account-settings.component';
 import { PostComponent } from './page/post/post.component';
+
+import { AdminComponent } from './page/admin/admin/admin.component';
+import { AdminCalendarComponent } from './page/admin/admin-calendar/admin-calendar.component';
+import { AdminEcashComponent } from './page/admin/admin-ecash/admin-ecash.component';
+import { AdminRegistrarComponent } from './page/admin/admin-registrar/admin-registrar.component';
+import { AdminReportsComponent } from './page/admin/admin-reports/admin-reports.component';
+import { AdminEcashTransactComponent } from './page/admin/ecash/admin-ecash-transact/admin-ecash-transact.component';
+import { AdminEcashInquireComponent } from './page/admin/ecash/admin-ecash-inquire/admin-ecash-inquire.component';
+import { AdminEcashToggleComponent } from './page/admin/ecash/admin-ecash-toggle/admin-ecash-toggle.component';
+
+import { AdminStudentAddComponent } from './page/admin/student/admin-student-add/admin-student-add.component';
+
 import { LoginComponent } from './page/login/login.component';
 import { LogoutComponent } from './page/logout/logout.component';
 
@@ -37,6 +49,24 @@ const routes: Routes = [
   { path: 'post/:id', component: PostComponent, canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'account/settings', component: AccountSettingsComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin', component: AdminComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin/calendar', component: AdminCalendarComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin/ecash', component: AdminEcashComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin/registrar', component: AdminRegistrarComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin/reports', component: AdminReportsComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin/ecash/transact', component: AdminEcashTransactComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin/ecash/inquire', component: AdminEcashInquireComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin/ecash/toggle', component: AdminEcashToggleComponent, canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }},
+  { path: 'admin/student/add', component: AdminStudentAddComponent, canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectLoggedInToHome }},
