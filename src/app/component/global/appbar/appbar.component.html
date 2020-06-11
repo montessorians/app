@@ -1,4 +1,4 @@
-<nav class="nav-extended seagreen">
+<nav *ngIf="user.account_type === 'student'" class="nav-extended seagreen">
     <div class="nav-content">
 		<ul class="tabs tabs-transparent">
             <li class="tab" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
@@ -32,4 +32,53 @@
             </li>
         </ul>
 	</div>
+</nav>
+
+<nav *ngIf="user.account_type === 'admin'" class="nav-extended seagreen">
+    <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+            <li class="tab" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">
+                <a href="javascript:void(0)" id="homeButton">
+                    Home
+                </a>
+            </li>
+            <li class="tab" routerLink="/admin/calendar" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">
+                <a href="javascript:void(0)" id="homeButton">
+                    Calendar
+                </a>
+            </li>
+            <li class="tab" routerLink="/admin/ecash" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">
+                <a href="javascript:void(0)" id="homeButton">
+                    Montessori Pay
+                </a>
+            </li>
+            <li class="tab" routerLink="/admin/registrar" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">
+                <a href="javascript:void(0)" id="homeButton">
+                    Registrar
+                </a>
+            </li>
+            <li class="tab" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">
+                <a href="javascript:void(0)" id="homeButton">
+                    Administration
+                </a>
+            </li>
+            <li class="tab" routerLink="/admin/reports" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">
+                <a href="javascript:void(0)" id="homeButton">
+                    Reports
+                </a>
+            </li>
+            <li class="tab" routerLink="/me" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">
+                <a href="javascript:void(0)" id="homeButton">
+                    Me
+                </a>
+            </li>
+        </ul>
+    </div>
 </nav>
