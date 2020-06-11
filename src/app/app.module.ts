@@ -21,6 +21,17 @@ import { ProfileComponent } from './page/profile/profile.component';
 import { AccountSettingsComponent } from './page/account-settings/account-settings.component';
 import { PostComponent } from './page/post/post.component';
 import { NavbarComponent } from './component/global/navbar/navbar.component';
+import { AdminCalendarComponent } from './page/admin/admin-calendar/admin-calendar.component';
+import { AdminEcashComponent } from './page/admin/admin-ecash/admin-ecash.component';
+import { AdminRegistrarComponent } from './page/admin/admin-registrar/admin-registrar.component';
+import { AdminComponent } from './page/admin/admin/admin.component';
+import { AdminReportsComponent } from './page/admin/admin-reports/admin-reports.component';
+import { AdminEcashTransactComponent } from './page/admin/ecash/admin-ecash-transact/admin-ecash-transact.component';
+import { AdminEcashInquireComponent } from './page/admin/ecash/admin-ecash-inquire/admin-ecash-inquire.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { AdminEcashToggleComponent } from './page/admin/ecash/admin-ecash-toggle/admin-ecash-toggle.component';
+import { AdminStudentAddComponent } from './page/admin/student/admin-student-add/admin-student-add.component';
+import { AdminStudentLinkAccountComponent } from './page/admin/student/admin-student-link-account/admin-student-link-account.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +49,24 @@ import { NavbarComponent } from './component/global/navbar/navbar.component';
     ProfileComponent,
     AccountSettingsComponent,
     PostComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminCalendarComponent,
+    AdminEcashComponent,
+    AdminRegistrarComponent,
+    AdminComponent,
+    AdminReportsComponent,
+    AdminEcashTransactComponent,
+    AdminEcashInquireComponent,
+    AdminEcashToggleComponent,
+    AdminStudentAddComponent,
+    AdminStudentLinkAccountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
